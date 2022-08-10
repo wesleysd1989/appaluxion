@@ -16,7 +16,11 @@ const image = {
 
 const ListItem = ({ item, index, animation, navigation }) => {
   return (
-    <Animatable.View animation={animation} duration={1000} delay={index * 300}>
+    <Animatable.View
+      animation={animation}
+      duration={1000}
+      delay={Math.floor(Math.random() * (1000 - 0) + 0)}
+    >
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() =>

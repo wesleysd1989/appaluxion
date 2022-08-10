@@ -8,6 +8,7 @@ import {
   saveGalleryFailure,
   saveGalleryUser,
   saveGalleryUserFailure,
+  savePaginateGallery,
 } from './actions';
 
 export function* gallery() {
@@ -34,7 +35,22 @@ export function* userGallery({ payload }) {
   }
 }
 
+export function* getPaginateGallery({ payload }) {
+  try {
+    const { page } = payload;
+    const response = yield call(api.get, 'photos', {
+      params: { page: page, per_page: 10 },
+    });
+    const data = response.data;
+    yield put(savePaginateGallery(page, data));
+  } catch (error) {
+    Alert.alert('Erro', 'error requesting photos of user');
+    yield put(saveGalleryFailure());
+  }
+}
+
 export default all([
   takeLatest('@gallery/GALLERY_REQUEST', gallery),
   takeLatest('@gallery/USER_GALLERY_REQUEST', userGallery),
+  takeLatest('@gallery/PAGINATE_GALLERY', getPaginateGallery),
 ]);

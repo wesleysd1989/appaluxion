@@ -17,6 +17,20 @@ export function saveGalleryFailure() {
   };
 }
 
+export function paginateGallery(page) {
+  return {
+    type: '@gallery/PAGINATE_GALLERY',
+    payload: { page },
+  };
+}
+
+export function savePaginateGallery(page, data) {
+  return {
+    type: '@gallery/SAVE_PAGINATE_GALLERY',
+    payload: { page, data },
+  };
+}
+
 export function GalleryUserRequest(id) {
   return {
     type: '@gallery/USER_GALLERY_REQUEST',
