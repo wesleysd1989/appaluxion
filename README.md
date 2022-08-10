@@ -1,6 +1,10 @@
 Aluxion app in React Native :rocket:
 ===
 
+## demo
+
+![demo](src/assets/giphy.gif)
+
 This app was created using [React Native](https://github.com/facebook/react-native/).
 
 ## How to start developing this project :gear:
